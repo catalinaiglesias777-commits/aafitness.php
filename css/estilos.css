@@ -1,0 +1,192 @@
+/* GENERAL */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+
+.menu{
+    background-color: #c79be9;
+}
+
+.nav-link{
+    color: white !important;
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+.nav-link:hover{
+    color: black !important;
+}
+
+.logo{
+    width: 90px;
+    transition: 0.3s;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+}
+/* HERO */
+
+.hero{
+    background-image: url("../img/banner.jpg");
+
+    background-size: cover;
+    background-position: center 10%;
+    background-repeat: no-repeat;
+
+    height: 550px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+
+    position: relative;
+}
+
+.hero::before{
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.4);
+}
+
+.hero-contenido{
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1{
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.hero h2{
+    color: #c79be9;
+    font-weight: bold;
+}
+
+/* ACTIVIDADES */
+
+.actividades img{
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+/* SECCIÓN SOBRE NOSOTROS */
+
+.about-section {
+    background-color: #f8f8f8;
+}
+
+.about-text {
+    max-width: 850px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* PROFES */
+
+.coach-card h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.coach-card img {
+    width: 100%;
+    max-width: 280px;
+    height: 280px;
+    object-fit: cover;
+    transition: transform .3s ease;
+}
+
+.coach-card img:hover {
+    transform: scale(1.03);
+}
+
+.nav-link.active{
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+
+.actividad-img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.card{
+    transition: .3s;
+}
+
+.card:hover{
+    transform: translateY(-8px);
+}
+
+/* FOOTER */
+
+/* FOOTER */
+
+.footer{
+    background-color: #111;
+    color: white;
+
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.footer h4{
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.footer-logo{
+    color: #c79be9;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.footer p{
+    color: #ccc;
+}
+
+.redes a{
+    color: white;
+
+    font-size: 30px;
+
+    margin-right: 15px;
+
+    transition: 0.3s;
+}
+
+.redes a:hover{
+    color: #c79be9;
+}
+
+.footer-bottom{
+    border-top: 1px solid #444;
+
+    margin-top: 30px;
+    padding-top: 20px;
+
+    font-size: 14px;
+}

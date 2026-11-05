@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades</title>
+
+     <!-- Bootstrap -->
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+ <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark menu">
+        <div class="container">
+
+            <!-- LOGO -->
+           <a class="navbar-brand" href="#">
+    <img src="img/logo.png" alt="logo" class="logo">
+</a>
+
+            <!-- BOTON MOBILE -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- ITEMS -->
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobrenosotros.php">Vení a entrenar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="actividades.php">Actividades</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="clasesyhorarios.php">Clases y horarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="planesyprecios.php">Planes y precios</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold mb-3">Actividades</h1>
+
+        <p class="mb-5">
+            Elegí el entrenamiento que mejor se adapte a tus objetivos.
+        </p>
+
+        <div class="row g-4">
+
+            <!-- CROSSFIT -->
+            <div class="col-md-6">
+
+                <img src="img/actividad5.jpg"
+                     alt="CrossFit"
+                     class="img-fluid actividad-img">
+
+                <h3 class="mt-3 fw-bold">
+                    CrossFit
+                </h3>
+
+                <p>
+                    Entrenamientos intensos que combinan fuerza,
+                    resistencia y velocidad para llevar tu rendimiento
+                    al máximo.
+                </p>
+
+                <a href="#" class="btn btn-dark">
+                    Más información
+                </a>
+
+            </div>
+
+            <!-- FUNCIONAL -->
+            <div class="col-md-6">
+
+                <img src="img/actividad4.jpg"
+                     alt="Entrenamiento Funcional"
+                     class="img-fluid actividad-img">
+
+                <h3 class="mt-3 fw-bold">
+                    Entrenamiento Funcional
+                </h3>
+
+                <p>
+                    Mejorá tu movilidad, coordinación y fuerza mediante
+                    ejercicios adaptados a movimientos cotidianos.
+                </p>
+
+                <a href="#" class="btn btn-dark">
+                    Más información
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="mt-5">
+
+            <a href="#" class="btn btn-dark btn-lg">
+                PROBÁ UNA CLASE SIN COSTO
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+    
+</body>
+</html>

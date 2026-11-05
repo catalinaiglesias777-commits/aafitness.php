@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes y Precios</title>
+
+    <!-- Bootstrap -->
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+ <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark menu">
+        <div class="container">
+
+            <!-- LOGO -->
+           <a class="navbar-brand" href="#">
+    <img src="img/logo.png" alt="logo" class="logo">
+</a>
+
+            <!-- BOTON MOBILE -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- ITEMS -->
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobrenosotros.php">Vení a entrenar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="actividades.php">Actividades</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="clasesyhorarios.php">Clases y horarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="planesyprecios.php">Planes y precios</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h1 class="fw-bold">
+                Planes y Precios
+            </h1>
+
+            <p>
+                Elegí el plan que mejor se adapte a tus objetivos.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- PLAN INICIAL -->
+            <div class="col-md-4">
+
+                <div class="card h-100 text-center shadow">
+
+                    <div class="card-body">
+
+                        <h3 class="fw-bold">
+                            Plan Inicial
+                        </h3>
+
+                        <h2 class="my-4">
+                            $25.000
+                        </h2>
+
+                        <ul class="list-unstyled">
+
+                            <li>✔ Acceso a sala de musculación</li>
+                            <li>✔ Rutina personalizada</li>
+                            <li>✔ Vestuarios</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PLAN FULL -->
+            <div class="col-md-4">
+
+                <div class="card h-100 text-center shadow border-dark">
+
+                    <div class="card-body">
+
+                        <h3 class="fw-bold">
+                            Plan Full
+                        </h3>
+
+                        <h2 class="my-4">
+                            $40.000
+                        </h2>
+
+                        <ul class="list-unstyled">
+
+                            <li>✔ Todo lo del Plan Inicial</li>
+                            <li>✔ Clases de CrossFit</li>
+                            <li>✔ Entrenamiento Funcional</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PLAN PREMIUM -->
+            <div class="col-md-4">
+
+                <div class="card h-100 text-center shadow">
+
+                    <div class="card-body">
+
+                        <h3 class="fw-bold">
+                            Plan Premium
+                        </h3>
+
+                        <h2 class="my-4">
+                            $55.000
+                        </h2>
+
+                        <ul class="list-unstyled">
+
+                            <li>✔ Todo lo del Plan Full</li>
+                            <li>✔ Seguimiento personalizado</li>
+                            <li>✔ Evaluación física mensual</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BOTÓN -->
+
+        <div class="text-center mt-5">
+
+            <a href="reservar.php" class="btn btn-dark btn-lg">
+                ELEGÍ TU PLAN Y EMPEZÁ YA
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+    
+</body>
+</html>

@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASES Y HORARIOS</title>
+
+     <!-- Bootstrap -->
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+ <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+     <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark menu">
+        <div class="container">
+
+            <!-- LOGO -->
+           <a class="navbar-brand" href="#">
+    <img src="img/logo.png" alt="logo" class="logo">
+</a>
+
+            <!-- BOTON MOBILE -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- ITEMS -->
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobrenosotros.php">Vení a entrenar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="actividades.php">Actividades</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="clasesyhorarios.php">Clases y horarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="planesyprecios.php">Planes y precios</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h1 class="fw-bold">Clases y Horarios</h1>
+
+            <p>
+                Consultá los horarios disponibles y elegí el que mejor se adapte a tu rutina.
+            </p>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-striped table-hover text-center">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>Horario</th>
+                        <th>Actividad</th>
+                        <th>Profesor</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>08:00 hs</td>
+                        <td>CrossFit</td>
+                        <td>Agustín García</td>
+                    </tr>
+
+                    <tr>
+                        <td>10:00 hs</td>
+                        <td>Funcional</td>
+                        <td>Camila Vega</td>
+                    </tr>
+
+                    <tr>
+                        <td>14:00 hs</td>
+                        <td>CrossFit</td>
+                        <td>Mateo Ferrer</td>
+                    </tr>
+
+                    <tr>
+                        <td>16:00 hs</td>
+                        <td>Funcional</td>
+                        <td>Agustín García</td>
+                    </tr>
+
+                    <tr>
+                        <td>18:00 hs</td>
+                        <td>CrossFit</td>
+                        <td>Camila Vega</td>
+                    </tr>
+
+                    <tr>
+                        <td>20:00 hs</td>
+                        <td>Funcional</td>
+                        <td>Mateo Ferrer</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="text-center mt-5">
+
+    <a href="reservar.php" class="btn btn-dark btn-lg">
+        RESERVÁ TU CLASE GRATIS
+    </a>
+
+</div>
+</body>
+</html>

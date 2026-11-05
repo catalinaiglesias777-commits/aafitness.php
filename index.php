@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AA Fitness</title>
+
+    <!-- Bootstrap -->
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+ <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark menu">
+        <div class="container">
+
+            <!-- LOGO -->
+           <a class="navbar-brand" href="#">
+    <img src="img/logo.png" alt="logo" class="logo">
+</a>
+
+            <!-- BOTON MOBILE -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- ITEMS -->
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.php">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobrenosotros.php">Vení a entrenar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="actividades.php">Actividades</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="clasesyhorarios.php">Clases y horarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="planesyprecios.php">Planes y precios</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO / BANNER -->
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="hero-contenido">
+
+                <h1>AA FITNESS</h1>
+
+                <h2>Entrená tu mejor versión</h2>
+
+                <a href="#" class="btn btn-dark">
+                    RESERVÁ TU CLASE GRATIS
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ACTIVIDADES -->
+    <section class="actividades py-5">
+
+        <div class="container text-center">
+
+            <h2 class="fw-bold">
+                Actividades destacadas
+            </h2>
+
+            <p>Crossfit / Funcional</p>
+
+            <div class="row mt-4">
+
+                <!-- CARD 1 -->
+                <div class="col-md-6">
+
+                    <img src="img/actividad1.jpg"
+                         class="img-fluid"
+                         alt="actividad">
+
+                    <h3 class="mt-3 fw-bold">
+                        Entrená sin límites
+                    </h3>
+
+                    <a href="#" class="btn btn-dark">
+                        Planes de entrenamiento
+                    </a>
+
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="col-md-6">
+
+                    <img src="img/actividad2.jpg"
+                         class="img-fluid"
+                         alt="actividad">
+
+                    <h3 class="mt-3 fw-bold">
+                        Quiénes somos
+                    </h3>
+
+                    <a href="#" class="btn btn-dark">
+                        ¡Conocenos!
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- BOTON ABAJO -->
+            <div class="mt-5">
+
+                <a href="#" class="btn btn-dark btn-lg">
+                    Probá una clase SIN COSTO
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+   <!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row text-center text-md-start">
+
+            <!-- LOGO -->
+            <div class="col-md-4 mb-4">
+
+                <h3 class="footer-logo">
+                    AA FITNESS
+                </h3>
+
+                <p>
+                    Entrená tu mejor versión.
+                    Fuerza, disciplina y constancia.
+                </p>
+
+            </div>
+
+            <!-- CONTACTO -->
+            <div class="col-md-4 mb-4">
+
+                <h4>Contacto</h4>
+
+                <p>
+                    <i class="bi bi-geo-alt-fill"></i>
+                    Blanco Encalada 5210
+                </p>
+
+                <p>
+                    <i class="bi bi-whatsapp"></i>
+                    11 4040 9999
+                </p>
+
+                <p>
+                    <i class="bi bi-envelope-fill"></i>
+                    aafitness@gmail.com
+                </p>
+
+            </div>
+
+            <!-- REDES -->
+            <div class="col-md-4 mb-4">
+
+                <h4>Seguinos</h4>
+
+                <div class="redes">
+
+                    <a href="#">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- COPYRIGHT -->
+
+        <div class="footer-bottom text-center">
+
+            <p>
+                © 2026 AA FITNESS - Todos los derechos reservados
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
