@@ -190,3 +190,49 @@ body{
 
     font-size: 14px;
 }
+
+/* LOGIN ADMINISTRADORES */
+
+.login-logo {
+    width: 140px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.login-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-titulo {
+    color: #212529;
+    font-weight: bold;
+}
+
+.login-btn {
+    background-color: #c79be9;
+    color: #212529;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #b57bdc;
+    color: #212529;
+}
+
+.footer-admin {
+    color:#aaa; 
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.3s
+}
+
+.footer-admin:hover{
+    color: #c79be9;
+}

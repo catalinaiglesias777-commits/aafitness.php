@@ -1,103 +1,3 @@
-
-<?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-
-require_once "conexion.php";
-
-$mensaje = "";
-$error = "";
-
-// Procesar el formulario cuando se envía
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $nombre = trim($_POST["nombre"] ?? "");
-    $email = trim($_POST["email"] ?? "");
-    $telefono = trim($_POST["telefono"] ?? "");
-    $id_horario = filter_input(INPUT_POST, "id_horario", FILTER_VALIDATE_INT);
-    $fecha_clase = $_POST["fecha_clase"] ?? "";
-
-    // Validar los datos recibidos
-    if (
-        $nombre === "" ||
-        !filter_var($email, FILTER_VALIDATE_EMAIL) ||
-        $telefono === "" ||
-        !$id_horario ||
-        $fecha_clase === ""
-    ) {
-        $error = "Por favor, completá todos los campos correctamente.";
-    } else {
-
-        // Verificar que el horario exista y esté disponible
-        $consulta = mysqli_prepare(
-            $conexion,
-            "SELECT id_horario FROM horarios
-             WHERE id_horario = ? AND disponible = 1"
-        );
-
-        mysqli_stmt_bind_param($consulta, "i", $id_horario);
-        mysqli_stmt_execute($consulta);
-
-        $resultado = mysqli_stmt_get_result($consulta);
-
-        if (mysqli_num_rows($resultado) === 0) {
-
-            $error = "El horario seleccionado no está disponible.";
-
-        } else {
-
-            // Guardar la reserva en MySQL
-            $sql = "INSERT INTO reservas
-                    (nombre, email, telefono, id_horario, fecha_clase)
-                    VALUES (?, ?, ?, ?, ?)";
-
-            $stmt = mysqli_prepare($conexion, $sql);
-
-            mysqli_stmt_bind_param(
-                $stmt,
-                "sssis",
-                $nombre,
-                $email,
-                $telefono,
-                $id_horario,
-                $fecha_clase
-            );
-
-            if (mysqli_stmt_execute($stmt)) {
-                $mensaje = "¡Tu reserva fue registrada correctamente!";
-            } else {
-                $error = "No se pudo registrar la reserva. Intentá nuevamente.";
-            }
-
-            mysqli_stmt_close($stmt);
-        }
-
-        mysqli_stmt_close($consulta);
-    }
-}
-
-// Obtener horarios disponibles para mostrar en el formulario
-$sql_horarios = "SELECT
-                    horarios.id_horario,
-                    horarios.dia_semana,
-                    horarios.hora,
-                    actividades.nombre AS actividad
-
-                 FROM horarios
-
-                 INNER JOIN actividades
-                 ON horarios.id_actividad = actividades.id_actividad
-
-                 WHERE horarios.disponible = 1
-
-                 ORDER BY horarios.dia_semana, horarios.hora";
-
-$resultado_horarios = mysqli_query($conexion, $sql_horarios);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,6 +14,28 @@ $resultado_horarios = mysqli_query($conexion, $sql_horarios);
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+
+<?php
+$conexion = mysqli_connect("localhost", "root", "", "aa_fitness")
+or exit("No se pudo conectar con la base de datos");
+
+$consulta = "SELECT id_horario, dia_semana, hora, id_actividad
+             FROM horarios
+             WHERE disponible = 1
+             ORDER BY id_horario";
+
+$resultado = mysqli_query($conexion, $consulta);
+
+$horariosBD = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+$consulta_actividades = "SELECT id_actividad, nombre
+                        FROM actividades
+                        ORDER BY id_actividad";
+
+$resultado_actividades = mysqli_query($conexion, $consulta_actividades);
+
+$actividadesBD = mysqli_fetch_all($resultado_actividades, MYSQLI_ASSOC);
+?>
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark menu">
         <div class="container">
@@ -134,23 +56,23 @@ $resultado_horarios = mysqli_query($conexion, $sql_horarios);
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Inicio</a>
+                        <a class="nav-link" href="index.html">Inicio</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="sobrenosotros.php">Vení a entrenar</a>
+                        <a class="nav-link" href="sobrenosotros.html">Vení a entrenar</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="actividades.php">Actividades</a>
+                        <a class="nav-link" href="actividades.html">Actividades</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="clasesyhorarios.php">Clases y horarios</a>
+                        <a class="nav-link" href="clasesyhorarios.html">Clases y horarios</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="planesyprecios.php">Planes y precios</a>
+                        <a class="nav-link" href="planesyprecios.html">Planes y precios</a>
                     </li>
 
                     <li class="nav-item">
@@ -185,155 +107,132 @@ $resultado_horarios = mysqli_query($conexion, $sql_horarios);
 
             <div class="col-md-8">
 
-                <div class="card shadow p-4">
+<div class="card shadow p-4">
 
-                  
-<form action="reservar.php" method="POST">
+    <form action="procesar-reserva.php" method="POST">
 
-    <!-- MENSAJES DE CONFIRMACION O ERROR -->
+        <!-- MENSAJE DE RESERVA EXITOSA -->
 
-    <?php if ($mensaje !== "") { ?>
+        <?php if (isset($_GET['reserva']) && $_GET['reserva'] === 'exitosa') { ?>
 
-        <div class="alert alert-success" role="alert">
-            <?php echo htmlspecialchars($mensaje); ?>
-        </div>
+            <div class="alert alert-success" role="alert">
+                ¡Tu reserva fue registrada correctamente!
+            </div>
 
-    <?php } ?>
+        <?php } ?>
 
-    <?php if ($error !== "") { ?>
+        <!-- NOMBRE -->
 
-        <div class="alert alert-danger" role="alert">
-            <?php echo htmlspecialchars($error); ?>
-        </div>
+                        <div class="mb-3">
 
-    <?php } ?>
+                            <label class="form-label">
+                                Nombre y Apellido
+                            </label>
 
+                            <input
+                                type="text"
+                                name="nombre_apellido"
+                                class="form-control"
+                                placeholder="Ingresá tu nombre completo"
+                                required>
 
-    <!-- NOMBRE -->
+                        </div>
 
-    <div class="mb-3">
+                        <!-- MAIL -->
 
-        <label class="form-label">
-            Nombre y Apellido
-        </label>
+                        <div class="mb-3">
 
-        <input
-            type="text"
-            name="nombre"
-            class="form-control"
-            placeholder="Ingresá tu nombre completo"
-            required>
+                            <label class="form-label">
+                                Email
+                            </label>
 
-    </div>
+                            <input
+                                type="email"
+                                name="email"
+                                class="form-control"
+                                placeholder="ejemplo@email.com"
+                                required>
 
+                        </div>
 
-    <!-- EMAIL -->
+                        <!-- TELEFONO -->
 
-    <div class="mb-3">
+                        <div class="mb-3">
 
-        <label class="form-label">
-            Email
-        </label>
+                            <label class="form-label">
+                                Teléfono
+                            </label>
 
-        <input
-            type="email"
-            name="email"
-            class="form-control"
-            placeholder="ejemplo@email.com"
-            required>
+                            <input
+                                type="tel"
+                                name="telefono"
+                                class="form-control"
+                                placeholder="11 1234 5678"
+                                required>
 
-    </div>
+                        </div>
 
+                        <!-- ACTIVIDAD -->
 
-    <!-- TELEFONO -->
+                        <div class="mb-3">
 
-    <div class="mb-3">
+                            <label class="form-label">
+                                Actividad de interés
+                            </label>
 
-        <label class="form-label">
-            Teléfono
-        </label>
+                            <select class="form-select" name="id_actividad" id="actividad" required>
 
-        <input
-            type="tel"
-            name="telefono"
-            class="form-control"
-            placeholder="11 1234 5678"
-            required>
+                                <option value="" selected disabled>
+                                    Seleccioná una actividad
+                                </option>
 
-    </div>
+                                <?php foreach ($actividadesBD as $actividad) { ?>
 
+    <option value="<?php echo (int)$actividad['id_actividad']; ?>">
+        <?php echo htmlspecialchars($actividad['nombre']); ?>
+    </option>
 
-    <!-- FECHA -->
+<?php } ?>
+                            </select>
 
-    <div class="mb-3">
+                        </div>
 
-        <label class="form-label">
-            Fecha de prueba
-        </label>
+                        <!-- FECHA -->
 
-        <input
-            type="date"
-            name="fecha_clase"
-            class="form-control"
-            min="<?php echo date('Y-m-d'); ?>"
-            required>
+                        <div class="mb-3">
 
-    </div>
+                            <label class="form-label">
+                                Fecha de prueba
+                            </label>
 
+                           <input
+                                type="date"
+                                name="fecha_prueba"
+                                id="fecha"
+                                class="form-control"
+                                required>
 
-    <!-- ACTIVIDAD Y HORARIO -->
+                        </div>
 
-    <div class="mb-4">
+                        <select class="form-select" name="id_horario" id="horario" required>
 
-        <label class="form-label">
-            Actividad, día y horario
-        </label>
+                            <option value="" selected disabled>
+                            Primero seleccioná una actividad
+                            </option>
 
-        <select
-            name="id_horario"
-            class="form-select"
-            required>
+                         </select>
 
-            <option value="" selected disabled>
-                Seleccioná una clase y horario
-            </option>
+                        <!-- BOTON -->
 
-            <?php while ($horario = mysqli_fetch_assoc($resultado_horarios)) { ?>
+                        <div class="text-center">
 
-                <option value="<?php echo $horario['id_horario']; ?>">
+                         <button type="submit" class="btn btn-dark btn-lg">
+                            RESERVAR CLASE
+                        </button>
 
-                    <?php
-                    echo htmlspecialchars(
-                        $horario['actividad'] . " - " .
-                        $horario['dia_semana'] . " - " .
-                        substr($horario['hora'], 0, 5) . " hs"
-                    );
-                    ?>
+                        </div>
 
-                </option>
-
-            <?php } ?>
-
-        </select>
-
-    </div>
-
-
-    <!-- BOTON -->
-
-    <div class="text-center">
-
-        <button
-            type="submit"
-            class="btn btn-dark btn-lg">
-
-            RESERVAR CLASE
-
-        </button>
-
-    </div>
-
-</form>
+                    </form>
 
                 </div>
 
@@ -344,6 +243,98 @@ $resultado_horarios = mysqli_query($conexion, $sql_horarios);
     </div>
 
 </section>
-    
+     <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    const actividad = document.getElementById("actividad");
+    const horario = document.getElementById("horario");
+    const fecha = document.getElementById("fecha");
+
+    const hoy = new Date();
+
+    const anio = hoy.getFullYear();
+    const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+    const dia = String(hoy.getDate()).padStart(2, "0");
+
+    const fechaHoy = `${anio}-${mes}-${dia}`;
+
+    fecha.min = fechaHoy;
+
+  const horariosBD = <?php echo json_encode($horariosBD); ?>;
+
+const horarios = {};
+
+horariosBD.forEach(function(item) {
+    const idActividad = item.id_actividad;
+
+    if (!horarios[idActividad]) {
+        horarios[idActividad] = [];
+    }
+
+    horarios[idActividad].push({
+        id: item.id_horario,
+        texto: item.dia_semana + " - " + item.hora.substring(0, 5) + " hs"
+    });
+});
+
+    actividad.addEventListener("change", function() {
+        horario.innerHTML = '<option value="" selected disabled>Seleccioná un horario</option>';
+
+        const horariosDisponibles = horarios[actividad.value] || [];
+
+        horariosDisponibles.forEach(function(item) {
+            const opcion = document.createElement("option");
+            opcion.value = item.id;
+            opcion.textContent = item.texto;
+            horario.appendChild(opcion);
+        });
+    });
+
+    horario.innerHTML = '<option value="" selected disabled>Primero seleccioná una actividad</option>';
+const diasSemana = {
+    "Domingo": 0,
+    "Lunes": 1,
+    "Martes": 2,
+    "Miércoles": 3,
+    "Miercoles": 3,
+    "Jueves": 4,
+    "Viernes": 5,
+    "Sábado": 6,
+    "Sabado": 6
+};
+
+const diasHorarios = {};
+
+horariosBD.forEach(function(item) {
+    diasHorarios[item.id_horario] = diasSemana[item.dia_semana];
+});
+function validarFecha() {
+    fecha.setCustomValidity("");
+
+    if (fecha.value === "" || horario.value === "") {
+        return;
+    }
+
+    const partes = fecha.value.split("-").map(Number);
+    const fechaSeleccionada = new Date(
+        partes[0],
+        partes[1] - 1,
+        partes[2]
+    );
+
+    const diaSeleccionado = fechaSeleccionada.getDay();
+    const diaPermitido = diasHorarios[horario.value];
+
+    if (diaSeleccionado !== diaPermitido) {
+        fecha.setCustomValidity(
+            "La fecha seleccionada no coincide con el día de la clase."
+        );
+        fecha.reportValidity();
+    }
+}
+
+fecha.addEventListener("change", validarFecha);
+horario.addEventListener("change", validarFecha);
+</script>
 </body>
 </html>
