@@ -28,9 +28,6 @@ if (!isset($_SESSION['id_admin'])) {
         <a href="admin-reservas.php" class="btn btn-secondary mb-4">
             Volver al panel
         </a>
-<a href="admin-reservas.php" class="btn btn-secondary mb-4">
-    Volver al panel
-</a>
 
 <?php
 $conexion = mysqli_connect("localhost", "root", "", "aa_fitness")
