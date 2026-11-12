@@ -43,7 +43,6 @@ $actividadesBD = mysqli_fetch_all($resultado_actividades, MYSQLI_ASSOC);
 ?>
 
 <h2 class="h4 mt-4 mb-3">Agregar nuevo horario</h2>
-<h2 class="h4 mt-4 mb-3">Agregar nuevo horario</h2>
 
 <form action="agregar-horario.php" method="POST" class="mb-5">
 
